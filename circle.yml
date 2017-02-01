@@ -1,7 +1,7 @@
 machine:
   node:
     version: 6.3.0
-    timezone: Asia/Tokyo
+  timezone: Asia/Tokyo
 
 dependencies:
   pre:
