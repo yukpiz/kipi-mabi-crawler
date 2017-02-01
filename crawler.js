@@ -14,8 +14,6 @@ exports.lambda_handler = (event, context) => {
 	} else {
 		console.log('  Mode: Lambda Scheduling');
 	}
-
-
 }
 
 exports.lambda_handler(null, null);
