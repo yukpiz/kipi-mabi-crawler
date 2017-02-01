@@ -1,4 +1,6 @@
 machine:
+  python:
+    version: 2.7
   node:
     version: 6.3.0
   timezone: Asia/Tokyo
@@ -6,6 +8,7 @@ machine:
 dependencies:
   pre:
     - |
+      pip install lamvery
       npm install -g npm@4
       npm install
 
