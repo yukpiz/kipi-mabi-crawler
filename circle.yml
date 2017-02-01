@@ -1,13 +1,12 @@
 machine:
   node:
     version: 6.3.0
-    post:
-      - npm install -g npm@4
     timezone: Asia/Tokyo
 
 dependencies:
   pre:
     - |
+      npm install -g npm@4
       npm install
 
 deployment:
