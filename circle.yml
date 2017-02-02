@@ -12,15 +12,13 @@ test:
 
 dependencies:
   pre:
-    - |
-      pip install lamvery
-      npm install -g npm@4
-      npm install
+    - pip install lamvery
+    - npm install -g npm@4
+    - npm install
 
 deployment:
   master-head:
     branch: master
     commands:
-      - |
-        lamvery deploy
-
+      - cd request/
+      - lamvery deploy
