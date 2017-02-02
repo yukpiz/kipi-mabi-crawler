@@ -21,5 +21,7 @@ deployment:
     branch: master
     commands:
       - pwd
-      - cd request/
+      - cd ./request/
+      - pwd
+      - cd `pwd`/request/
       - lamvery deploy
