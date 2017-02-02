@@ -43,7 +43,19 @@ exports.lambda_handler = (event, context) => {
 						var dynamodb = new aws.DynamoDB({region: 'ap-northeast-1'});
 						async.each(urls, (url) => {
 							console.log('INSERT URL => ' + url);
-							//Insert To DynamoDB
+							var params = {
+								TableName: 'kipi-mabi-urls',
+								Item: {
+									'url': {'S': url},
+									'type': {'S': 'trade'},
+									'server': {'S': s},
+								},
+							};
+							dynamodb.putItem(params, (err, data) => {
+								if (err) {
+									console.log(err);
+								}
+							});
 						});
 						callback(null);
 					},
