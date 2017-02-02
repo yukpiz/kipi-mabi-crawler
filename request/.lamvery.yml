@@ -1,0 +1,12 @@
+profile: null
+region: ap-northeast-1
+versioning: false
+default_alias: master
+configuration:
+  name: kipi-mabi-crawler
+  runtime: nodejs4.3
+  role: arn:aws:iam::793539351801:role/lamvery-test
+  handler: crawler.lambda_handler
+  description: Kipi Web Crawler
+  timeout: 10
+  memory_size: 128
