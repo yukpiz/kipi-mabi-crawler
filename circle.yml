@@ -20,5 +20,6 @@ deployment:
   master-head:
     branch: master
     commands:
+      - pwd
       - cd request/
       - lamvery deploy
