@@ -3,6 +3,7 @@
 var async = require('async');
 var request = require('request');
 var cheerio = require('cheerio');
+var aws = require('aws-sdk');
 
 var local = false;
 
@@ -16,13 +17,7 @@ var trade_boards = {
 };
 
 exports.lambda_handler = (event, context) => {
-	local = context == null
-	console.log('=== KIPI WEB CRAWLER ==========');
-	if (local) {
-		console.log('  Mode: Local Test');
-	} else {
-		console.log('  Mode: Lambda Scheduling');
-	}
+	initialize(event, context);
 
 	//Request Free Board.
 
@@ -33,12 +28,9 @@ exports.lambda_handler = (event, context) => {
 		trade_boards[b].forEach(s => {
 			var url = base_url + '/' + b + '?sv=' + s;
 			request.get(url, {timeout: 20000}, (err, res, body) => {
-				//Parse HTML for Trade board.
 				async.waterfall([
 					(callback) => {
-						//1. Parse HTML Function.
-						console.log('  ===> Parse HTML');
-						console.log('    URL: ' + url);
+						console.log('REQUEST URL => ' + url);
 						$ = cheerio.load(body, {decodeEntities: false});
 						detail_urls = [];
 						$('[class^="list-head"] ~ tr ').each(function() {
@@ -48,22 +40,11 @@ exports.lambda_handler = (event, context) => {
 						callback(null, detail_urls);
 					},
 					(urls, callback) => {
-						//2. Request Detail Article.
-						console.log('  ===> Request Detail Article');
+						var dynamodb = new aws.DynamoDB({region: 'ap-northeast-1'});
 						async.each(urls, (url) => {
-							request.get(url, {timeout: 20000}, (err, res, body) => {
-								console.log('hogehoge');
-							});
+							console.log('INSERT URL => ' + url);
+							//Insert To DynamoDB
 						});
-						callback(null);
-					},
-					(callback) => {
-						//Parse HTML
-						callback(null);
-					},
-					(callback) => {
-						//Insert DynamoDB
-						console.log('finish');
 						callback(null);
 					},
 				]);
@@ -71,6 +52,17 @@ exports.lambda_handler = (event, context) => {
 		});
 	});
 }
+
+var initialize = (event, context) => {
+	console.log('=== KIPI WEB CRAWLER ==========');
+	console.log('Function: DETAIL URL CRAWLER');
+	local = context == null
+	if (local) {
+		console.log('Mode: Local Test');
+	} else {
+		console.log('Mode: Lambda Scheduling');
+	}
+};
 
 // Call function for localhost.
 exports.lambda_handler(null, null);
