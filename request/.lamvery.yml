@@ -8,5 +8,5 @@ configuration:
   role: arn:aws:iam::793539351801:role/lamvery-test
   handler: crawler.lambda_handler
   description: Kipi Web Crawler
-  timeout: 10
+  timeout: 60
   memory_size: 128
