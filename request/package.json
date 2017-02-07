@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "async": "^2.1.4",
-    "aws-sdk": "^2.9.0",
-    "cheerio": "^0.22.0",
-    "request": "^2.79.0"
-  }
-}

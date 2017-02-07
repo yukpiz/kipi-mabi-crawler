@@ -1,8 +1,6 @@
 machine:
   python:
     version: 2.7
-  node:
-    version: 6.3.0
   timezone: Asia/Tokyo
 
 test:
@@ -13,11 +11,9 @@ test:
 dependencies:
   pre:
     - pip install lamvery
-    - npm install -g npm@4
-    - npm install
 
 deployment:
   master-head:
     branch: master
     commands:
-      - cd ./request/; lamvery deploy
+      - cd ./crawler/; lamvery deploy
