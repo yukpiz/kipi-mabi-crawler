@@ -7,6 +7,9 @@ test:
   pre:
     - echo "(」・ω・)」"
     - echo "(/・ω・)/"
+  override:
+    - echo "(」・ω・)」"
+    - echo "(/・ω・)/"
 
 dependencies:
   pre:
