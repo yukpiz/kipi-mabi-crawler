@@ -5,8 +5,8 @@ default_alias: master
 configuration:
   name: kipi-mabi-crawler
   runtime: python2.7
-  role: arn:aws:iam::793539351801:role/lamvery-test
+  role: {{ env['AWS_LAMBDA_ROLE'] }}
   handler: crawler.lambda_handler
   description: Kipi Mabinogi Crawler
-  timeout: 60
+  timeout: 180
   memory_size: 128
