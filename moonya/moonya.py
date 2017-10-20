@@ -57,13 +57,13 @@ def tweet_mari(message):
 
 def tweet_ruairi(message):
     print(message)
-    auth = auth_twitter(
-        os.environ["RUAIRI_TWITTER_CONSUMER_KEY"],
-        os.environ["RUAIRI_TWITTER_CONSUMER_SECRET"],
-        os.environ["RUAIRI_TWITTER_TOKEN"],
-        os.environ["RUAIRI_TWITTER_TOKEN_SECRET"])
-    t = twitter.Twitter(auth=auth)
-    t.statuses.update(status=message)
+    #auth = auth_twitter(
+    #    os.environ["RUAIRI_TWITTER_CONSUMER_KEY"],
+    #    os.environ["RUAIRI_TWITTER_CONSUMER_SECRET"],
+    #    os.environ["RUAIRI_TWITTER_TOKEN"],
+    #    os.environ["RUAIRI_TWITTER_TOKEN_SECRET"])
+    #t = twitter.Twitter(auth=auth)
+    #t.statuses.update(status=message)
 
 def auth_twitter(consumer_key, consumer_secret, token, token_secret):
     return twitter.OAuth(
