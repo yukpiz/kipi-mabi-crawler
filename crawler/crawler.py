@@ -150,7 +150,7 @@ def parseTradeType(soup):
     imgs = soup.select("[class='detail-title-icn'] > img")
     if imgs == None:
         return ""
-    for img ireturnn imgs:
+    for img in imgs:
         if re.match(r".*buy.*", img.get("src")):
             return "買取"
         if re.match(r".*sell.*", img.get("src")):
