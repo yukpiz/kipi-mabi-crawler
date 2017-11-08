@@ -5,7 +5,7 @@ import twitter
 from os.path import join, dirname
 from dotenv import load_dotenv
 
-MAX_TEXT_LENGTH = 50
+MAX_TEXT_LENGTH = 100
 
 def lambda_handler(event, context):
     print(event)
